@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://tjpetz.net/'
 languageCode = 'en-us'
 title = 'Thomas J. Petz, Jr.'
-theme = 'ananke'
+theme = 'hugo-book'
