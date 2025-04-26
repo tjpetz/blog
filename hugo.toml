@@ -1,4 +1,4 @@
 baseURL = 'https://tjpetz.net/'
 languageCode = 'en-us'
 title = 'Thomas J. Petz, Jr.'
-theme = 'hugo-book'
+theme = 'ananke'
