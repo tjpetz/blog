@@ -2,7 +2,8 @@
 date = '2020-05-09T17:50:01-04:00'
 draft = false
 title = 'SWD Breakout and Breadboard for Nano 33 BLE Sense'
-keywords = ["microcontrollers"]
+categories = ["microcontrollers"]
+tags = ["nano33"]
 +++
 
 The Arduino Nano 33 BLE (Sense) and the Nano 33 IoT expose SWD pads on the bottom of the board.  These pads expose the SWD interface that enable debugging when used with an SWD compatible debugger such as the Segger [J-Link Mini EDU](https://www.segger.com/products/debug-probes/j-link/models/j-link-edu-mini/).

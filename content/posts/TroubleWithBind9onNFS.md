@@ -2,6 +2,7 @@
 date = '2020-03-29T10:29:24-04:00'
 draft = false
 title = 'Trouble with Bind9 on a Pi with NFS root'
+categories = ["linux", "networking"]
 +++
 
 I got a new Raspberry Pi 4 as I’m looking to consolidate some of my old Pi’s and clean up my servers. To avoid issues with wearing out the SD cards I mount the root file system off an NFS NAS storage server.

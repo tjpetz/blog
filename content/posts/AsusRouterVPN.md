@@ -2,6 +2,7 @@
 date = '2016-10-01T10:37:22-04:00'
 draft = false
 title = 'Configure Asus AC-68U Router VPN'
+toc = true
 +++
 
 The Asus AC-68U (like many routers) supports VPN functionality with the OpenVPN SSL based VPN software.  Out of the box the VPN is very simple to configure.  However, as delivered it uses quite a weak self signed certificate by Asus.  Additionally because of the way the default certs are configured it really only securely supports a single client.

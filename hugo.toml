@@ -1,4 +1,34 @@
 baseURL = 'https://tjpetz.net/'
 languageCode = 'en-us'
 title = 'Thomas J. Petz, Jr.'
-theme = 'ananke'
+theme = 'mainroad'
+
+[Params]
+  copyright = "Thomas J. Petz, Jr."
+  readmore = true
+  toc = true
+  post_meta = ["date", "categories"]
+  # mainSections = ["post", "blog", "news"] # Specify section pages to show on home page and the "Recent articles" widget
+  
+[Params.logo]
+  title = "Thomas J. Petz, Jr."
+  subtitle = "Software thoughts"
+
+[Params.sidebar]
+  home = "right" # Configure layout for home page
+  list = "right"  # Configure layout for list pages
+  single = false # Configure layout for single pages
+  # Enable widgets in given order
+  widgets = ["search", "recent", "categories", "taglist"]
+
+[Params.widgets]
+  recent_num = 5 # Set the number of articles in the "Recent articles" widget
+  categories_counter = false # Enable counter for each category in "Categories" widget
+  tags_counter = false # Enable counter for each tag in "Tags" widget
+
+[Params.widgets.search]
+  cached = false # activate cache if true
+  url = "https://google.com/search"
+  [Params.widgets.search.input]
+    name = "sitesearch"
+    pre = ""

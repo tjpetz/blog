@@ -1,143 +1,78 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Resolution on Bind9 on NFS | Thomas J. Petz, Jr.</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="After a good bit of investigation and thinking… the problem with bind9 has nothing to do with bind9. The problem was a mismatch between UIDs between the Synology NAS server and the bind account on the pi. As I was using sec=sys for authentication all the authentication is based on UIDs. On the pi bind has a UID of 109. There was no account on my Synology NAS with a UIDs of 109. Hence the access was denied by the NFS server.">
-    <meta name="generator" content="Hugo 0.147.0">
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+<html class="no-js" lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Resolution on Bind9 on NFS - Thomas J. Petz, Jr.</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-
-    
-
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/posts/bind9onnfs/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/posts/bind9onnfs/">
-  <meta property="og:site_name" content="Thomas J. Petz, Jr.">
-  <meta property="og:title" content="Resolution on Bind9 on NFS">
-  <meta property="og:description" content="After a good bit of investigation and thinking… the problem with bind9 has nothing to do with bind9. The problem was a mismatch between UIDs between the Synology NAS server and the bind account on the pi. As I was using sec=sys for authentication all the authentication is based on UIDs. On the pi bind has a UID of 109. There was no account on my Synology NAS with a UIDs of 109. Hence the access was denied by the NFS server.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2020-04-05T10:26:49-04:00">
-    <meta property="article:modified_time" content="2020-04-05T10:26:49-04:00">
-
-  <meta itemprop="name" content="Resolution on Bind9 on NFS">
-  <meta itemprop="description" content="After a good bit of investigation and thinking… the problem with bind9 has nothing to do with bind9. The problem was a mismatch between UIDs between the Synology NAS server and the bind account on the pi. As I was using sec=sys for authentication all the authentication is based on UIDs. On the pi bind has a UID of 109. There was no account on my Synology NAS with a UIDs of 109. Hence the access was denied by the NFS server.">
-  <meta itemprop="datePublished" content="2020-04-05T10:26:49-04:00">
-  <meta itemprop="dateModified" content="2020-04-05T10:26:49-04:00">
-  <meta itemprop="wordCount" content="291">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Resolution on Bind9 on NFS">
-  <meta name="twitter:description" content="After a good bit of investigation and thinking… the problem with bind9 has nothing to do with bind9. The problem was a mismatch between UIDs between the Synology NAS server and the bind account on the pi. As I was using sec=sys for authentication all the authentication is based on UIDs. On the pi bind has a UID of 109. There was no account on my Synology NAS with a UIDs of 109. Hence the access was denied by the NFS server.">
-
+	<link rel="stylesheet" href="/css/style.css">
 	
-  </head><body class="ma0 avenir bg-near-white development">
 
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-        Thomas J. Petz, Jr.
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      <div class="ananke-socials"></div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  
-  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">Resolution on Bind9 on NFS</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2020-04-05T10:26:49-04:00">April 5, 2020</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>After a good bit of investigation and thinking… the problem with bind9 has nothing to do with bind9. The problem was a mismatch between UIDs between the Synology NAS server and the bind account on the pi. As I was using sec=sys for authentication all the authentication is based on UIDs. On the pi bind has a UID of 109. There was no account on my Synology NAS with a UIDs of 109. Hence the access was denied by the NFS server.</p>
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Thomas J. Petz, Jr." rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Thomas J. Petz, Jr.</div>
+					<div class="logo__tagline">Software thoughts</div>
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Resolution on Bind9 on NFS</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2020-04-05T10:26:49-04:00">April 05, 2020</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">Linux</a>, <a class="meta__link" href="/categories/raspberry-pi/" rel="category">Raspberry Pi</a>
+	</span>
+</div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>After a good bit of investigation and thinking… the problem with bind9 has nothing to do with bind9. The problem was a mismatch between UIDs between the Synology NAS server and the bind account on the pi. As I was using sec=sys for authentication all the authentication is based on UIDs. On the pi bind has a UID of 109. There was no account on my Synology NAS with a UIDs of 109. Hence the access was denied by the NFS server.</p>
 <p>To continue using NFS for the root filesystem I will need to either run in an insecure configuration: you can map every single vid on the client to the admin account on the Synology and then grant full access to the files on the Synology. However that means every account on the pi would end up having full admin access over everything. Certainly not a very good idea. Or alternately I’d need to manage ALL accounts centrally on the Synology for all the pi’s. This seems like a bit of an overkill in complexity.</p>
 <p>To avoid the complexity I’m going to use iSCSI for the root filesystem for each pi. I’ll probably use NFS for common shares such as home directories and where I want to share docker images.</p>
 <p>This is a good concise guide for configuring iSCSI on a pi for booting: <a href="https://www.domoticz.com/forum/viewtopic.php?t=28797">https://www.domoticz.com/forum/viewtopic.php?t=28797</a>.  Note, it does assume some familiarity with iSCSI. Assuming you have that familiarity it’s a really good short guide.</p>
 <p>I decided against using the script to switch between SD and iSCSI booting included in the article. For the few times I may need to revert to SD booting I’ll user a different SD or simply copy the cmdline.txt and config.txt files from their original configuration.</p>
-<ul class="pa0">
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
 
-    <aside class="w-30-l mt6-l">
+		</div>
+	</article>
+</main>
 
 
 
 
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
-    &copy;  Thomas J. Petz, Jr. 2025 
-  </a>
-    <div><div class="ananke-socials"></div>
-</div>
-  </div>
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2025 Thomas J. Petz, Jr..
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
 </footer>
-
-  </body>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
 </html>

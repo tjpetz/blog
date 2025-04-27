@@ -2,6 +2,8 @@
 date = '2019-12-14T10:33:00-04:00'
 draft = false
 title = 'New Arduino Project'
+categories = ["microcontrollers"]
+tags = ["nano33"]
 +++
 
 I’m working on tracking down and resolving a humidity problem in our home. While I have some basic measurements of humidity through our Nest Thermostat and a Canary device I want broader coverage so I can measure localized problem areas. The relatively new Arduino 33 BLE Sense looks to be a great device to meet my needs.

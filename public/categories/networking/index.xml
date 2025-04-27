@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networking on Thomas J. Petz, Jr.</title>
+    <link>http://localhost:1313/categories/networking/</link>
+    <description>Recent content in Networking on Thomas J. Petz, Jr.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Mar 2020 10:29:24 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trouble with Bind9 on a Pi with NFS root</title>
+      <link>http://localhost:1313/posts/troublewithbind9onnfs/</link>
+      <pubDate>Sun, 29 Mar 2020 10:29:24 -0400</pubDate>
+      <guid>http://localhost:1313/posts/troublewithbind9onnfs/</guid>
+      <description>&lt;p&gt;I got a new Raspberry Pi 4 as I’m looking to consolidate some of my old Pi’s and clean up my servers. To avoid issues with wearing out the SD cards I mount the root file system off an NFS NAS storage server.&lt;/p&gt;&#xA;&lt;p&gt;Unfortunately I’ve hit a problem with installing Bind9 using the defaults when mounting root via NFS. When starting Bind9 I get the error&lt;/p&gt;&#xA;&lt;p&gt;named[5466]: working directory ‘/var/cache/bind’ is not writable&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

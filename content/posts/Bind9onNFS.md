@@ -2,6 +2,7 @@
 date = '2020-04-05T10:26:49-04:00'
 draft = false
 title = 'Resolution on Bind9 on NFS'
+categories = ["linux", "raspberry pi"]
 +++
 
 After a good bit of investigation and thinking… the problem with bind9 has nothing to do with bind9. The problem was a mismatch between UIDs between the Synology NAS server and the bind account on the pi. As I was using sec=sys for authentication all the authentication is based on UIDs. On the pi bind has a UID of 109. There was no account on my Synology NAS with a UIDs of 109. Hence the access was denied by the NFS server.

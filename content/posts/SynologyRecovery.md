@@ -2,6 +2,7 @@
 date = '2020-08-11T10:25:17-04:00'
 draft = false
 title = 'Recover Synology rsync backup jobs'
+categories = ["linux"]
 +++
 
 I recently upgraded a very old Netgear ReadyNAS device to a new Synology DS-420+ at a remote location.  
