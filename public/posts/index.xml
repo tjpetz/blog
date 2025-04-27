@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
+    <title>Posts on Thomas J. Petz, Jr.</title>
     <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <description>Recent content in Posts on Thomas J. Petz, Jr.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Apr 2025 16:11:41 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
+      <title>Software Thoughts</title>
       <link>http://localhost:1313/posts/my-first-post/</link>
       <pubDate>Sat, 26 Apr 2025 16:11:41 -0400</pubDate>
       <guid>http://localhost:1313/posts/my-first-post/</guid>
       <description>&lt;h2 id=&#34;tjpetz-consulting&#34;&gt;TJPetz Consulting&lt;/h2&gt;&#xA;&lt;p&gt;Software Thoughts&lt;/p&gt;&#xA;&lt;p&gt;Hi Bob!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SWD Breakout and Breadboard for Nano 33 BLE Sense</title>
+      <link>http://localhost:1313/posts/nanobreakout/</link>
+      <pubDate>Sat, 09 May 2020 17:50:01 -0400</pubDate>
+      <guid>http://localhost:1313/posts/nanobreakout/</guid>
+      <description>&lt;p&gt;The Arduino Nano 33 BLE (Sense) and the Nano 33 IoT expose SWD pads on the bottom of the board.  These pads expose the SWD interface that enable debugging when used with an SWD compatible debugger such as the Segger J-Link Mini EDU (&lt;a href=&#34;https://www.segger.com/products/debug-probes/j-link/models/j-link-edu-mini/)&#34;&gt;https://www.segger.com/products/debug-probes/j-link/models/j-link-edu-mini/)&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The pads on the bottom of the Nanos are very small (and as we’ll see later quite fragile).  Normally you would use some form of test fixture and pogo pins to connect to the pads.  I don’t have that.  Some approaches show soldering dupont wires to the pads and then connecting to the J-Link via and adapter.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
