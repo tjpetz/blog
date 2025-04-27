@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Thomas J. Petz, Jr.">
-  <meta itemprop="datePublished" content="2025-04-26T16:11:41-04:00">
-  <meta itemprop="dateModified" content="2025-04-26T16:11:41-04:00">
+  <meta itemprop="datePublished" content="2020-09-24T10:15:05-04:00">
+  <meta itemprop="dateModified" content="2020-09-24T10:15:05-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Thomas J. Petz, Jr.">
 
@@ -113,16 +113,14 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/my-first-post/" class="color-inherit dim link">
-            Software Thoughts
+          <a href="/posts/updatestonanoblesensors/" class="color-inherit dim link">
+            Updates to the NanoBLESensors Project
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h2 id="tjpetz-consulting">TJPetz Consulting</h2>
-<p>Software Thoughts</p>
-<p>Hi Bob!</p>
+          <p>I’ve merged in some significant updates to the NanoBLESensors project. Hop over to <a href="https://github.com/tjpetz/NanoBLESensors">GitHub</a> to check them out.</p>
         </div>
-        <a href="/posts/my-first-post/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/updatestonanoblesensors/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -138,15 +136,39 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/nanobreakout/" class="color-inherit dim link">
-            SWD Breakout and Breadboard for Nano 33 BLE Sense
+          <a href="/posts/dht11/" class="color-inherit dim link">
+            DHT11 Temperature and Humidity Sensor and the Arduino Nano 33 BLE
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>The Arduino Nano 33 BLE (Sense) and the Nano 33 IoT expose SWD pads on the bottom of the board.  These pads expose the SWD interface that enable debugging when used with an SWD compatible debugger such as the Segger J-Link Mini EDU (<a href="https://www.segger.com/products/debug-probes/j-link/models/j-link-edu-mini/)">https://www.segger.com/products/debug-probes/j-link/models/j-link-edu-mini/)</a>.</p>
-<p>The pads on the bottom of the Nanos are very small (and as we’ll see later quite fragile).  Normally you would use some form of test fixture and pogo pins to connect to the pads.  I don’t have that.  Some approaches show soldering dupont wires to the pads and then connecting to the J-Link via and adapter.</p>
+          <p>I’ve created a new simple Arduino sketch using a variety of Temperature/Humidity sensors. <a href="https://github.com/tjpetz/EnvironmentSensorTests">(https://github.com/tjpetz/EnvironmentSensorTests</a>. Of note in this simple example is using the DHT11 sensor with a Nano 33 BLE Sense board.</p>
         </div>
-        <a href="/posts/nanobreakout/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/dht11/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/synologyrecovery/" class="color-inherit dim link">
+            Recover Synology rsync backup jobs
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>I recently upgraded a very old Netgear ReadyNAS device to a new Synology DS-420+ at a remote location.</p>
+<p>The main use of the old ReadyNAS was an a rsync target for backing up my main Synology rack station.  I have about 2.5TB of rsync’d files.  I wanted to reuse the existing rsync files to avoid the several months necessary to build a new  backup.</p>
+<p>I thought I could just repoint the existing Hyper Backup jobs on the Synology rack station.  This did not work as I couldn’t reset the name of the share where the files were to be backed up to.  I also tried building new jobs using the targets of the copied files but this would error out because HyperBackup would report that files already existed in the target directories.</p>
+        </div>
+        <a href="/posts/synologyrecovery/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -156,6 +178,36 @@
         
       </section>
 
+      
+        <section class="w-100">
+          <h1 class="f3">More</h1>
+          
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/posts/nanobreakout/" class="link black dim">
+                SWD Breakout and Breadboard for Nano 33 BLE Sense
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/posts/bind9onnfs/" class="link black dim">
+                Resolution on Bind9 on NFS
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/posts/troublewithbind9onnfs/" class="link black dim">
+                Trouble with Bind9 on a Pi with NFS root
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/posts/bleandwifionnano33iot/" class="link black dim">
+                BLE and WiFi on Nano 33 IoT
+              </a>
+            </h2>
+          
+        </section>
       
 
     </div>

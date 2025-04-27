@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Configure Asus AC-68U Router VPN | Thomas J. Petz, Jr.</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="The Asus AC-68U (like many routers) supports VPN functionality with the OpenVPN SSL based VPN software.  Out of the box the VPN is very simple to configure.  However, as delivered it uses quite a weak self signed certificate by Asus.  Additionally because of the way the default certs are configured it really only securely supports a single client.
+I searched the web and the documentation but didn’t find a good tutorial on configuring the router with your own certificates.   With some trial and error I was able to work out how to configure the system with my own CA and Certs.  This tutorial describes the steps I took to configure the system.  In this tutorial I assume you have your own CA and some basic familiarity with CAs and Certs.">
+    <meta name="generator" content="Hugo 0.147.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/asusroutervpn/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/posts/asusroutervpn/">
+  <meta property="og:site_name" content="Thomas J. Petz, Jr.">
+  <meta property="og:title" content="Configure Asus AC-68U Router VPN">
+  <meta property="og:description" content="The Asus AC-68U (like many routers) supports VPN functionality with the OpenVPN SSL based VPN software. Out of the box the VPN is very simple to configure. However, as delivered it uses quite a weak self signed certificate by Asus. Additionally because of the way the default certs are configured it really only securely supports a single client.
+I searched the web and the documentation but didn’t find a good tutorial on configuring the router with your own certificates. With some trial and error I was able to work out how to configure the system with my own CA and Certs. This tutorial describes the steps I took to configure the system. In this tutorial I assume you have your own CA and some basic familiarity with CAs and Certs.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2016-10-01T10:37:22-04:00">
+    <meta property="article:modified_time" content="2016-10-01T10:37:22-04:00">
+
+  <meta itemprop="name" content="Configure Asus AC-68U Router VPN">
+  <meta itemprop="description" content="The Asus AC-68U (like many routers) supports VPN functionality with the OpenVPN SSL based VPN software. Out of the box the VPN is very simple to configure. However, as delivered it uses quite a weak self signed certificate by Asus. Additionally because of the way the default certs are configured it really only securely supports a single client.
+I searched the web and the documentation but didn’t find a good tutorial on configuring the router with your own certificates. With some trial and error I was able to work out how to configure the system with my own CA and Certs. This tutorial describes the steps I took to configure the system. In this tutorial I assume you have your own CA and some basic familiarity with CAs and Certs.">
+  <meta itemprop="datePublished" content="2016-10-01T10:37:22-04:00">
+  <meta itemprop="dateModified" content="2016-10-01T10:37:22-04:00">
+  <meta itemprop="wordCount" content="1718">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Configure Asus AC-68U Router VPN">
+  <meta name="twitter:description" content="The Asus AC-68U (like many routers) supports VPN functionality with the OpenVPN SSL based VPN software. Out of the box the VPN is very simple to configure. However, as delivered it uses quite a weak self signed certificate by Asus. Additionally because of the way the default certs are configured it really only securely supports a single client.
+I searched the web and the documentation but didn’t find a good tutorial on configuring the router with your own certificates. With some trial and error I was able to work out how to configure the system with my own CA and Certs. This tutorial describes the steps I took to configure the system. In this tutorial I assume you have your own CA and some basic familiarity with CAs and Certs.">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Thomas J. Petz, Jr.
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Configure Asus AC-68U Router VPN</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2016-10-01T10:37:22-04:00">October 1, 2016</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>The Asus AC-68U (like many routers) supports VPN functionality with the OpenVPN SSL based VPN software.  Out of the box the VPN is very simple to configure.  However, as delivered it uses quite a weak self signed certificate by Asus.  Additionally because of the way the default certs are configured it really only securely supports a single client.</p>
+<p>I searched the web and the documentation but didn’t find a good tutorial on configuring the router with your own certificates.   With some trial and error I was able to work out how to configure the system with my own CA and Certs.  This tutorial describes the steps I took to configure the system.  In this tutorial I assume you have your own CA and some basic familiarity with CAs and Certs.</p>
+<p>As I have no requirements for externally trusted certificates I have setup my own CA on a Raspberry PI using OpenSSL on my network.  I followed this tutorial to configure the CA. It’s also a very good tutorial for getting up to speed with OpenVPN from scratch.</p>
+<p>With the version of OpenVPN on the Asus I’ve noted a few particular settings that are not necessarily the same as other OpenVPN versions.  In particular the server side certificates must be market with the server attribute and the client certs must be marked with the client attribute.  (Note, the Asus CA seems to only generate client certs with the name “client” which means you can have only 1 unique client and cannot use the different client settings in the admin console.)  This was the part that required trial and error because it didn’t become clear that these restrictions were in place until after my original certs were installed.</p>
+<h2 id="configure-your-ca">Configure your CA</h2>
+<p>Add sections to your CA configuration file to enable the creation of Server and Client certs. In this case we just need sections and set the nsCertType parameter.  Adding each section separately allows us to create server only and client only certs required by Asus.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span> server_cert <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use this section to sign a cert that is authorized only for SSL server use.</span>
+</span></span><span style="display:flex;"><span>basicConstraints<span style="color:#f92672">=</span>CA:FALSE
+</span></span><span style="display:flex;"><span>nsCertType <span style="color:#f92672">=</span> server
+</span></span><span style="display:flex;"><span>nsComment <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OpenSSL generated certificate - server&#34;</span>
+</span></span><span style="display:flex;"><span>subjectKeyIdentifier <span style="color:#f92672">=</span> hash
+</span></span><span style="display:flex;"><span>authorityKeyIdentifier<span style="color:#f92672">=</span>keyid,issuer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> client_cert <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use this section to sign a cert that is authorized only for SSL client use.</span>
+</span></span><span style="display:flex;"><span>basicConstraints<span style="color:#f92672">=</span>CA:FALSE
+</span></span><span style="display:flex;"><span>nsCertType <span style="color:#f92672">=</span> client
+</span></span><span style="display:flex;"><span>nsComment <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OpenSSL generated certificate - client&#34;</span>
+</span></span><span style="display:flex;"><span>subjectKeyIdentifier <span style="color:#f92672">=</span> hash
+</span></span><span style="display:flex;"><span>authorityKeyIdentifier<span style="color:#f92672">=</span>keyid,issuer
+</span></span></code></pre></div><h2 id="create-the-server-certs">Create the server certs</h2>
+<p>Create a certificate request.  Note, this does not need to be created as root.  For this example I’ve created the cert with 1024 bit key.  You should consider using 2048 for greater security.  In the examples that follow I’m using some very generic names.  You’ll want to select names more meaningful to your particular configuration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ openssl req -newkey rsa:1024 -nodes -out test1.csr -keyout test1.key
+</span></span><span style="display:flex;"><span>Generating a <span style="color:#ae81ff">1024</span> bit RSA private key
+</span></span><span style="display:flex;"><span>...........................................++++++
+</span></span><span style="display:flex;"><span>...++++++
+</span></span><span style="display:flex;"><span>writing new private key to <span style="color:#e6db74">&#39;test1.key&#39;</span>
+</span></span><span style="display:flex;"><span>-----
+</span></span><span style="display:flex;"><span>You are about to be asked to enter information that will be incorporated
+</span></span><span style="display:flex;"><span>into your certificate request.
+</span></span><span style="display:flex;"><span>What you are about to enter is what is called a Distinguished Name or a DN.
+</span></span><span style="display:flex;"><span>There are quite a few fields but you can leave some blank
+</span></span><span style="display:flex;"><span>For some fields there will be a default value,
+</span></span><span style="display:flex;"><span>If you enter <span style="color:#e6db74">&#39;.&#39;</span>, the field will be left blank.
+</span></span><span style="display:flex;"><span>-----
+</span></span><span style="display:flex;"><span>Country Name <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span> letter code<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>US<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>State or Province Name <span style="color:#f92672">(</span>full name<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Pennsylvania<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>Locality Name <span style="color:#f92672">(</span>eg, city<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Blue Bell<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>Organization Name <span style="color:#f92672">(</span>eg, company<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>TJPetz CA<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>Organizational Unit Name <span style="color:#f92672">(</span>eg, section<span style="color:#f92672">)</span> <span style="color:#f92672">[]</span>:
+</span></span><span style="display:flex;"><span>Common Name <span style="color:#f92672">(</span>e.g. server FQDN or YOUR name<span style="color:#f92672">)</span> <span style="color:#f92672">[]</span>:test1
+</span></span><span style="display:flex;"><span>Email Address <span style="color:#f92672">[]</span>:test@test.com
+</span></span><span style="display:flex;"><span>Please enter the following <span style="color:#e6db74">&#39;extra&#39;</span> attributes
+</span></span><span style="display:flex;"><span>to be sent with your certificate request
+</span></span><span style="display:flex;"><span>A challenge password <span style="color:#f92672">[]</span>:XXXXXXXXXXX
+</span></span><span style="display:flex;"><span>An optional company name <span style="color:#f92672">[]</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Now sign the cert using the CA.  Note, this needs to be run as root.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ sudo openssl ca -config /etc/ssl/openssl.cnf -notext -in test1.csr -out test1.crt -extensions server_cert
+</span></span><span style="display:flex;"><span>Using configuration from /etc/ssl/openssl.cnf
+</span></span><span style="display:flex;"><span>Check that the request matches the signature
+</span></span><span style="display:flex;"><span>Signature ok
+</span></span><span style="display:flex;"><span>Certificate Details:
+</span></span><span style="display:flex;"><span>Serial Number: <span style="color:#ae81ff">21</span> <span style="color:#f92672">(</span>0x15<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Validity
+</span></span><span style="display:flex;"><span>Not Before: Oct  <span style="color:#ae81ff">1</span> 16:42:30 <span style="color:#ae81ff">2016</span> GMT
+</span></span><span style="display:flex;"><span>Not After : Oct  <span style="color:#ae81ff">1</span> 16:42:30 <span style="color:#ae81ff">2017</span> GMT
+</span></span><span style="display:flex;"><span>Subject:
+</span></span><span style="display:flex;"><span>countryName               <span style="color:#f92672">=</span> US
+</span></span><span style="display:flex;"><span>stateOrProvinceName       <span style="color:#f92672">=</span> Pennsylvania
+</span></span><span style="display:flex;"><span>organizationName          <span style="color:#f92672">=</span> TJPetz CA
+</span></span><span style="display:flex;"><span>commonName                <span style="color:#f92672">=</span> test1
+</span></span><span style="display:flex;"><span>emailAddress              <span style="color:#f92672">=</span> test@test.com
+</span></span><span style="display:flex;"><span>X509v3 extensions:
+</span></span><span style="display:flex;"><span>X509v3 Basic Constraints:
+</span></span><span style="display:flex;"><span>CA:FALSE
+</span></span><span style="display:flex;"><span>Netscape Cert Type:
+</span></span><span style="display:flex;"><span>SSL Server
+</span></span><span style="display:flex;"><span>Netscape Comment:
+</span></span><span style="display:flex;"><span>OpenSSL generated certificate - server
+</span></span><span style="display:flex;"><span>X509v3 Subject Key Identifier:
+</span></span><span style="display:flex;"><span>37:AA:5C:C4:7C:4F:57:7B:EE:7A:E9:20:1F:85:14:CB:E6:7A:2D:1A
+</span></span><span style="display:flex;"><span>X509v3 Authority Key Identifier:
+</span></span><span style="display:flex;"><span>keyid:8E:89:C0:C6:FA:D2:C9:CA:9E:80:9F:D7:F4:7A:B9:C6:64:11:BB:50
+</span></span><span style="display:flex;"><span>Certificate is to be certified <span style="color:#66d9ef">until</span> Oct  <span style="color:#ae81ff">1</span> 16:42:30 <span style="color:#ae81ff">2017</span> GMT <span style="color:#f92672">(</span><span style="color:#ae81ff">365</span> days<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Sign the certificate? <span style="color:#f92672">[</span>y/n<span style="color:#f92672">]</span>:y
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> out of <span style="color:#ae81ff">1</span> certificate requests certified, commit? <span style="color:#f92672">[</span>y/n<span style="color:#f92672">]</span>y
+</span></span><span style="display:flex;"><span>Write out database with <span style="color:#ae81ff">1</span> new entries
+</span></span><span style="display:flex;"><span>Data Base Updated
+</span></span></code></pre></div><p>The server cert is now available in test1.crt.  View it’s attributes to confirm it was correctly created.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ openssl x509 -in test1.crt -text -noout
+</span></span><span style="display:flex;"><span>Certificate:
+</span></span><span style="display:flex;"><span>Data:
+</span></span><span style="display:flex;"><span>Version: <span style="color:#ae81ff">3</span> <span style="color:#f92672">(</span>0x2<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Serial Number: <span style="color:#ae81ff">21</span> <span style="color:#f92672">(</span>0x15<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Signature Algorithm: sha256WithRSAEncryption
+</span></span><span style="display:flex;"><span>Issuer: C<span style="color:#f92672">=</span>US, ST<span style="color:#f92672">=</span>Pennsylvania, L<span style="color:#f92672">=</span>Blue Bell, O<span style="color:#f92672">=</span>TJPetz CA, CN<span style="color:#f92672">=</span>bbsrv01.home.tjpetz.com/emailAddress<span style="color:#f92672">=</span>admin@tjpetz.com
+</span></span><span style="display:flex;"><span>Validity
+</span></span><span style="display:flex;"><span>Not Before: Oct <span style="color:#ae81ff">1</span> 16:42:30 <span style="color:#ae81ff">2016</span> GMT
+</span></span><span style="display:flex;"><span>Not After : Oct <span style="color:#ae81ff">1</span> 16:42:30 <span style="color:#ae81ff">2017</span> GMT
+</span></span><span style="display:flex;"><span>Subject: C<span style="color:#f92672">=</span>US, ST<span style="color:#f92672">=</span>Pennsylvania, O<span style="color:#f92672">=</span>TJPetz CA, CN<span style="color:#f92672">=</span>test1/emailAddress<span style="color:#f92672">=</span>test@test.com
+</span></span><span style="display:flex;"><span>Subject Public Key Info:
+</span></span><span style="display:flex;"><span>Public Key Algorithm: rsaEncryption
+</span></span><span style="display:flex;"><span>Public-Key: <span style="color:#f92672">(</span><span style="color:#ae81ff">1024</span> bit<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Modulus:
+</span></span><span style="display:flex;"><span>00:e3:b6:a2:11:b4:d6:ea:b3:4f:c0:a4:2b:3e:bc:
+</span></span><span style="display:flex;"><span>e9:ab:e3:c0:63:b9:e1:ca:ed:d5:44:51:00:e6:06:
+</span></span><span style="display:flex;"><span>e5:5b:ca:38:26:b1:ab:b8:ab:11:dc:ac:f0:15:a3:
+</span></span><span style="display:flex;"><span>7e:0f:57:eb:8d:d5:d1:6f:9d:c5:d6:ab:02:ac:a5:
+</span></span><span style="display:flex;"><span>81:00:e3:0a:72:90:50:d1:c4:86:e1:fc:e4:d5:29:
+</span></span><span style="display:flex;"><span>c7:cc:04:67:98:a3:8d:73:02:1a:67:6b:f5:83:e4:
+</span></span><span style="display:flex;"><span>36:43:44:0c:98:5d:83:6d:52:6e:2c:f2:02:02:e7:
+</span></span><span style="display:flex;"><span>5a:ae:55:f9:b0:66:62:e2:db:71:7d:d7:ee:52:ea:
+</span></span><span style="display:flex;"><span>c5:d9:ff:71:20:04:3d:0b:23
+</span></span><span style="display:flex;"><span>Exponent: <span style="color:#ae81ff">65537</span> <span style="color:#f92672">(</span>0x10001<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>X509v3 extensions:
+</span></span><span style="display:flex;"><span>X509v3 Basic Constraints:
+</span></span><span style="display:flex;"><span>CA:FALSE
+</span></span><span style="display:flex;"><span>Netscape Cert Type:
+</span></span><span style="display:flex;"><span>SSL Server
+</span></span><span style="display:flex;"><span>Netscape Comment:
+</span></span><span style="display:flex;"><span>OpenSSL generated certificate - server
+</span></span><span style="display:flex;"><span>X509v3 Subject Key Identifier:
+</span></span><span style="display:flex;"><span>37:AA:5C:C4:7C:4F:57:7B:EE:7A:E9:20:1F:85:14:CB:E6:7A:2D:1A
+</span></span><span style="display:flex;"><span>X509v3 Authority Key Identifier:
+</span></span><span style="display:flex;"><span>keyid:8E:89:C0:C6:FA:D2:C9:CA:9E:80:9F:D7:F4:7A:B9:C6:64:11:BB:50
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Signature Algorithm: sha256WithRSAEncryption
+</span></span><span style="display:flex;"><span>b0:cb:62:5c:22:42:50:7c:33:b3:21:9c:12:1f:af:4b:dd:00:
+</span></span><span style="display:flex;"><span>99:a9:cc:1c:57:2d:25:04:a0:25:ed:71:21:68:c4:ec:ee:91:
+</span></span><span style="display:flex;"><span>64:94:a6:f1:2f:c0:da:cc:97:a6:92:ac:f0:3e:b9:78:92:c3:
+</span></span><span style="display:flex;"><span>b0:29:7c:93:47:10:fc:63:f9:c1:5a:e7:8f:02:46:c5:ee:e3:
+</span></span><span style="display:flex;"><span>da:8e:6f:e9:7f:1c:3e:15:60:32:59:18:6f:c4:1c:80:dc:b9:
+</span></span><span style="display:flex;"><span>61:6b:0e:4c:cd:04:ee:eb:e3:8d:a4:8f:bb:b3:6a:fa:06:4b:
+</span></span><span style="display:flex;"><span>8c:ae:7e:a1:e2:72:bf:05:34:55:1b:4a:a5:51:83:e3:a3:21:
+</span></span><span style="display:flex;"><span>da:45:f2:54:f1:06:3f:9b:1c:ea:2d:25:50:ce:e0:47:59:aa:
+</span></span><span style="display:flex;"><span>6e:b9:48:b4:aa:fd:48:2c:9e:98:b7:08:4c:f1:45:d1:61:7e:
+</span></span><span style="display:flex;"><span>c8:29:f2:46:5e:52:96:83:c2:fa:87:46:b5:d9:7e:27:25:e8:
+</span></span><span style="display:flex;"><span>f7:30:d0:7b:12:ef:c7:18:39:40:4c:52:4b:33:e9:f9:8a:b9:
+</span></span><span style="display:flex;"><span>24:a1:90:cc:6a:2d:85:18:ee:fb:11:8e:55:d1:d1:82:0c:c1:
+</span></span><span style="display:flex;"><span>91:b5:8b:c7:ab:94:9c:f1:dd:e7:12:54:f7:59:2c:fd:f7:d0:
+</span></span><span style="display:flex;"><span>d1:84:33:5d:45:23:d2:b8:08:d8:33:b4:d7:bf:c8:1d:28:ed:
+</span></span><span style="display:flex;"><span>80:f0:13:2f:36:66:ce:98:81:23:ac:21:2c:d3:92:12:41:74:
+</span></span><span style="display:flex;"><span>f6:1b:07:7a:77:56:19:3e:76:8c:e3:16:8f:c9:8a:91:93:46:
+</span></span><span style="display:flex;"><span>5d:84:5a:9b:99:c4:20:0e:aa:70:2d:e6:a5:b1:cb:6e:8c:6b:
+</span></span><span style="display:flex;"><span>16:c0:d2:21:f2:f2:8a:d5:28:a9:2a:d9:b6:ba:45:a5:e8:1a:
+</span></span><span style="display:flex;"><span>30:44:4e:53:db:ff:fe:d7:fd:31:a0:0e:db:48:b4:eb:24:94:
+</span></span><span style="display:flex;"><span>04:bd:63:51:4b:06:95:08:64:af:1a:23:af:2c:65:fb:d7:b2:
+</span></span><span style="display:flex;"><span>8d:7b:ad:12:3a:61:c0:63:19:de:81:2d:24:e3:44:16:06:99:
+</span></span><span style="display:flex;"><span>f6:1e:53:a5:ec:6c:6e:c2:bf:54:99:8d:23:18:9d:85:39:97:
+</span></span><span style="display:flex;"><span>37:e3:9e:ab:b2:5b:37:b0:78:4e:0a:87:c1:ca:ed:9c:d1:09:
+</span></span><span style="display:flex;"><span>e0:88:34:1a:3b:ac:fe:e9:e0:0f:66:8a:5f:d5:59:a7:ef:b7:
+</span></span><span style="display:flex;"><span>ec:bb:da:64:a9:6c:60:55:e1:0a:ef:20:2a:e3:a4:78:c9:83:
+</span></span><span style="display:flex;"><span>b5:33:18:17:c7:d3:95:30:94:01:22:fc:ab:11:4b:9e:d0:43:
+</span></span><span style="display:flex;"><span>ca:4a:cd:7f:0a:49:44:aa:0d:33:f8:97:1c:d1:63:09:fc:6a:
+</span></span><span style="display:flex;"><span>ae:5a:8f:d0:f9:91:14:1d:75:80:f7:98:7a:33:43:8e:d9:da:
+</span></span><span style="display:flex;"><span>c8:99:6b:0a:b3:7a:35:21
+</span></span></code></pre></div><p>Now we have a server certificate we can use with the Asus router.</p>
+<h2 id="create-the-diffie-hellman-parameters">Create the Diffie Hellman Parameters</h2>
+<p>Next we need to create the Diffie Hellman Parameters.  This is used to generate the share secret that will be used to encrypt each VPN session.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ openssl dhparam -out dhparams.pem <span style="color:#ae81ff">1024</span>
+</span></span><span style="display:flex;"><span>Generating DH parameters, <span style="color:#ae81ff">1024</span> bit long safe prime, generator <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>This is going to take a long time
+</span></span><span style="display:flex;"><span>...................................+............+..........................................................+...........................................................+.+.................+..........+.....................+..........+..........................................................................................................................................................................+............+....................+....+.............................................................................+................................................................+...................................+...........................+................................................................+...................................+.......+....+...................................................+..........+..++*++*++*
+</span></span></code></pre></div><h2 id="configure-the-ca-and-certs-in-asus-router">Configure the CA and certs in Asus router.</h2>
+<p>From the VPN menu select Advanced and then follow the link “Content modification of Keys &amp; Certificates” in the Authorization Mode section.</p>
+<p><img src="/images/Asus/pic1.png" alt="VPN Server Configuration Screen"></p>
+<ul>
+<li>Paste the public key certificate of your CA into the “Certificate Authority” field.</li>
+<li>Paste the contents of test1.crt into the “Server Certificate” field.</li>
+<li>Paste the contents of test1.key into the “Server Key” field.</li>
+<li>Past the contents of dhparams.pem into the “Diffie Hellman parameters” field.</li>
+</ul>
+<p>If you ever need to revoke a client cert you can paste the revocation in the the final field.</p>
+<p><img src="/images/Asus/pic2.png" alt="VPN Certificate Parameters"></p>
+<h2 id="configure-the-client-options">Configure the client options</h2>
+<p>To enable LAN to LAN connectivity you need to enable client specific settings.  Select the following options:</p>
+<ul>
+<li>Manage Client-Specific Options = Yes</li>
+<li>Allow Client &lt;-&gt; Client = Yes</li>
+<li>Allow only specific clients = Yes</li>
+</ul>
+<p><img src="/images/Asus/pic3.png" alt="VPN Client Options"></p>
+<p>Now configure the client.  In this case I have 3 clients configured.  The first is another Asus router at another location, the second is a private network on AWS, and the third is my iPad.  In each case the IP Address entered is the address of the client network.  Note, this will almost always be a private IPv4 subnet.  I also set the Push option to Yes to enable the routing tables to be correctly updates when a client connects to the VPN servers.</p>
+<h2 id="add-vpn-clients">Add VPN Clients</h2>
+<p>To add VPN clients we start by creating the client certificates.  It’s very important to set the CN of the client cert to the user/client name we enter into the Asus router.  In this example the client is names test2.  You will probably want to use a more meaningful name for your configuration.</p>
+<p>Start by creating the certificate request:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ openssl req -newkey rsa:1024 -nodes -out test2.csr -keyout test2.key
+</span></span><span style="display:flex;"><span>Generating a <span style="color:#ae81ff">1024</span> bit RSA private key
+</span></span><span style="display:flex;"><span>................................................++++++
+</span></span><span style="display:flex;"><span>.............................................................++++++
+</span></span><span style="display:flex;"><span>writing new private key to <span style="color:#e6db74">&#39;test2.key&#39;</span>
+</span></span><span style="display:flex;"><span>-----
+</span></span><span style="display:flex;"><span>You are about to be asked to enter information that will be incorporated
+</span></span><span style="display:flex;"><span>into your certificate request.
+</span></span><span style="display:flex;"><span>What you are about to enter is what is called a Distinguished Name or a DN.
+</span></span><span style="display:flex;"><span>There are quite a few fields but you can leave some blank
+</span></span><span style="display:flex;"><span>For some fields there will be a default value,
+</span></span><span style="display:flex;"><span>If you enter <span style="color:#e6db74">&#39;.&#39;</span>, the field will be left blank.
+</span></span><span style="display:flex;"><span>-----
+</span></span><span style="display:flex;"><span>Country Name <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span> letter code<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>US<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>State or Province Name <span style="color:#f92672">(</span>full name<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Pennsylvania<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>Locality Name <span style="color:#f92672">(</span>eg, city<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Blue Bell<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>Organization Name <span style="color:#f92672">(</span>eg, company<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>TJPetz CA<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>Organizational Unit Name <span style="color:#f92672">(</span>eg, section<span style="color:#f92672">)</span> <span style="color:#f92672">[]</span>:
+</span></span><span style="display:flex;"><span>Common Name <span style="color:#f92672">(</span>e.g. server FQDN or YOUR name<span style="color:#f92672">)</span> <span style="color:#f92672">[]</span>:test2
+</span></span><span style="display:flex;"><span>Email Address <span style="color:#f92672">[]</span>:test2@test.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Please enter the following ‘extra’ attributes
+</span></span><span style="display:flex;"><span>to be sent with your certificate request
+</span></span><span style="display:flex;"><span>A challenge password <span style="color:#f92672">[]</span>:XXXXXXXXX
+</span></span><span style="display:flex;"><span>An optional company name <span style="color:#f92672">[]</span>:
+</span></span></code></pre></div><p>Then sign the request:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo openssl ca -config /etc/ssl/openssl.cnf -notext -in test2.csr -out test2.crt -extensions client_certUsing configuration from /etc/ssl/openssl.cnf
+</span></span><span style="display:flex;"><span>Check that the request matches the signature
+</span></span><span style="display:flex;"><span>Signature ok
+</span></span><span style="display:flex;"><span>Certificate Details:
+</span></span><span style="display:flex;"><span>Serial Number: <span style="color:#ae81ff">22</span> <span style="color:#f92672">(</span>0x16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Validity
+</span></span><span style="display:flex;"><span>Not Before: Oct <span style="color:#ae81ff">1</span> 19:06:02 <span style="color:#ae81ff">2016</span> GMT
+</span></span><span style="display:flex;"><span>Not After : Oct <span style="color:#ae81ff">1</span> 19:06:02 <span style="color:#ae81ff">2017</span> GMT
+</span></span><span style="display:flex;"><span>Subject:
+</span></span><span style="display:flex;"><span>countryName <span style="color:#f92672">=</span> US
+</span></span><span style="display:flex;"><span>stateOrProvinceName <span style="color:#f92672">=</span> Pennsylvania
+</span></span><span style="display:flex;"><span>organizationName <span style="color:#f92672">=</span> TJPetz CA
+</span></span><span style="display:flex;"><span>commonName <span style="color:#f92672">=</span> test2
+</span></span><span style="display:flex;"><span>emailAddress <span style="color:#f92672">=</span> test2@test.com
+</span></span><span style="display:flex;"><span>X509v3 extensions:
+</span></span><span style="display:flex;"><span>X509v3 Basic Constraints:
+</span></span><span style="display:flex;"><span>CA:FALSE
+</span></span><span style="display:flex;"><span>Netscape Cert Type:
+</span></span><span style="display:flex;"><span>SSL Client
+</span></span><span style="display:flex;"><span>Netscape Comment:
+</span></span><span style="display:flex;"><span>OpenSSL generated certificate - client
+</span></span><span style="display:flex;"><span>X509v3 Subject Key Identifier:
+</span></span><span style="display:flex;"><span>C0:D6:42:7E:8A:4E:E4:E5:7E:66:0D:72:1D:0F:B3:BA:C9:A3:C2:E5
+</span></span><span style="display:flex;"><span>X509v3 Authority Key Identifier:
+</span></span><span style="display:flex;"><span>keyid:8E:89:C0:C6:FA:D2:C9:CA:9E:80:9F:D7:F4:7A:B9:C6:64:11:BB:50
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Certificate is to be certified <span style="color:#66d9ef">until</span> Oct <span style="color:#ae81ff">1</span> 19:06:02 <span style="color:#ae81ff">2017</span> GMT <span style="color:#f92672">(</span><span style="color:#ae81ff">365</span> days<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Sign the certificate? <span style="color:#f92672">[</span>y/n<span style="color:#f92672">]</span>:y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> out of <span style="color:#ae81ff">1</span> certificate requests certified, commit? <span style="color:#f92672">[</span>y/n<span style="color:#f92672">]</span>y
+</span></span><span style="display:flex;"><span>Write out database with <span style="color:#ae81ff">1</span> new entries
+</span></span><span style="display:flex;"><span>Data Base Updated
+</span></span></code></pre></div><h2 id="create-the-client-account">Create the client account</h2>
+<p>Switch back to General mode on the server and then add an account for the client.  The Username must match the CN in the certificate.  Pick a suitably complex password.  However the real security of the connection is ensured by the certificate rather than the password.</p>
+<p><img src="/images/Asus/pic4.png" alt="Add VPN Client"></p>
+<h2 id="install-the-certificates-into-the-client-vpn">Install the certificates into the client VPN</h2>
+<p>Access the VPN client router and select OpenVPN on the VPN Client tab.  Enter the username and password created in the previous step.  Select the option to “Import the CA file or edit the .ovpn file manually.”.</p>
+<p><img src="/images/Asus/pic5.png" alt="Client VPN Settings"></p>
+<p>Press “Edit” in Manual Settings where you can paste in the certificates.</p>
+<p><img src="/images/Asus/pic6.png" alt="Client Side Certificates"></p>
+<ul>
+<li>Paste your CA’s public cert into “Certificate Authority” field.</li>
+<li>Paste the contents of test2.crt into the “Client Certificate” field.</li>
+<li>Past the contents of test2.key into the “Client Key” field.</li>
+<li>You may leave the other fields blank.</li>
+</ul>
+<p>If all went well the client VPN should now establish a connection with the VPN server.  Review the system error log to resolve any errors if the connection is not successful.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  Thomas J. Petz, Jr. 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
