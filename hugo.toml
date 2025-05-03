@@ -2,7 +2,7 @@ baseURL = 'https://tjpetz.com/'
 languageCode = 'en-us'
 title = 'Thomas J. Petz, Jr.'
 pagination.pagerSize = 5
-theme = 'mainroad'
+theme = 'ananke'
 
 [Params]
   copyright = "Thomas J. Petz, Jr."
