@@ -15,7 +15,7 @@ theme = 'mainroad'
   highlightColor = "#4D518E" # Override highlight color
 
 [Params.logo]
-  image = "/images/img_5161.jpeg"
+  image = "/images/IMG_5161.jpeg"
   title = "Thomas J. Petz, Jr."
   subtitle = "Software thoughts"
 
