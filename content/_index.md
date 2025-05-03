@@ -4,4 +4,3 @@ draft = true
 title = ''
 +++
 
-Greetings and Salutations!
