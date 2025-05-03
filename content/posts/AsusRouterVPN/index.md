@@ -189,7 +189,7 @@ This is going to take a long time
 
 From the VPN menu select Advanced and then follow the link “Content modification of Keys & Certificates” in the Authorization Mode section.
 
-![VPN Server Configuration Screen](/images/Asus/pic1.png)
+![VPN Server Configuration Screen](images/pic1.png)
 
 - Paste the public key certificate of your CA into the “Certificate Authority” field.
 - Paste the contents of test1.crt into the “Server Certificate” field.
@@ -198,7 +198,7 @@ From the VPN menu select Advanced and then follow the link “Content modificati
 
 If you ever need to revoke a client cert you can paste the revocation in the the final field.
 
-![VPN Certificate Parameters](/images/Asus/pic2.png)
+![VPN Certificate Parameters](images/pic2.png)
 
 ## Configure the client options
 
@@ -208,7 +208,7 @@ To enable LAN to LAN connectivity you need to enable client specific settings.  
 - Allow Client <-> Client = Yes
 - Allow only specific clients = Yes
 
-![VPN Client Options](/images/Asus/pic3.png)
+![VPN Client Options](images/pic3.png)
 
 Now configure the client.  In this case I have 3 clients configured.  The first is another Asus router at another location, the second is a private network on AWS, and the third is my iPad.  In each case the IP Address entered is the address of the client network.  Note, this will almost always be a private IPv4 subnet.  I also set the Push option to Yes to enable the routing tables to be correctly updates when a client connects to the VPN servers.
 
@@ -287,17 +287,17 @@ Data Base Updated
 
 Switch back to General mode on the server and then add an account for the client.  The Username must match the CN in the certificate.  Pick a suitably complex password.  However the real security of the connection is ensured by the certificate rather than the password.
 
-![Add VPN Client](/images/Asus/pic4.png)
+![Add VPN Client](images/pic4.png)
 
 ## Install the certificates into the client VPN
 
 Access the VPN client router and select OpenVPN on the VPN Client tab.  Enter the username and password created in the previous step.  Select the option to “Import the CA file or edit the .ovpn file manually.”.
 
-![Client VPN Settings](/images/Asus/pic5.png)
+![Client VPN Settings](images/pic5.png)
 
 Press “Edit” in Manual Settings where you can paste in the certificates.
 
-![Client Side Certificates](/images/Asus/pic6.png)
+![Client Side Certificates](images/pic6.png)
 
 - Paste your CA’s public cert into “Certificate Authority” field.
 - Paste the contents of test2.crt into the “Client Certificate” field.
