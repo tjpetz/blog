@@ -1,6 +1,7 @@
-baseURL = 'https://tjpetz.net/'
+baseURL = 'https://tjpetz.com/'
 languageCode = 'en-us'
 title = 'Thomas J. Petz, Jr.'
+pagination.pagerSize = 5
 theme = 'mainroad'
 
 [Params]
@@ -8,9 +9,13 @@ theme = 'mainroad'
   readmore = true
   toc = true
   post_meta = ["date", "categories"]
-  # mainSections = ["post", "blog", "news"] # Specify section pages to show on home page and the "Recent articles" widget
-  
+  mainSections = ["posts", "about"] # Specify section pages to show on home page and the "Recent articles" widget
+
+[Params.style.vars]
+  highlightColor = "#4D518E" # Override highlight color
+
 [Params.logo]
+  image = "/images/img_5161.jpeg"
   title = "Thomas J. Petz, Jr."
   subtitle = "Software thoughts"
 
@@ -19,16 +24,17 @@ theme = 'mainroad'
   list = "right"  # Configure layout for list pages
   single = false # Configure layout for single pages
   # Enable widgets in given order
-  widgets = ["search", "recent", "categories", "taglist"]
+  widgets = ["recent", "categories", "taglist", "social"]
 
 [Params.widgets]
   recent_num = 5 # Set the number of articles in the "Recent articles" widget
-  categories_counter = false # Enable counter for each category in "Categories" widget
-  tags_counter = false # Enable counter for each tag in "Tags" widget
+  categories_counter = true # Enable counter for each category in "Categories" widget
+  tags_counter = true # Enable counter for each tag in "Tags" widget
 
-[Params.widgets.search]
-  cached = false # activate cache if true
-  url = "https://google.com/search"
-  [Params.widgets.search.input]
-    name = "sitesearch"
-    pre = ""
+[Params.widgets.social]
+  # Enable parts of social widget
+  linkedin = "tpetz"
+  github = "tjpetz"
+  email = "tom@tjpetz.com"
+
+[menu]

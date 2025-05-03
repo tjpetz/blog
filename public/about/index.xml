@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Thomas J. Petz, Jr.</title>
+    <link>http://localhost:1313/about/</link>
+    <description>Recent content in Abouts on Thomas J. Petz, Jr.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Apr 2025 16:01:50 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/about/</link>
+      <pubDate>Sun, 27 Apr 2025 16:01:50 -0400</pubDate>
+      <guid>http://localhost:1313/about/about/</guid>
+      <description>&lt;p&gt;I have been developing software for a very long time.  I learned FORTRAN on punch cards and  Z-80 assembler on a TRS-80 Model 1.  I cut my teeth professionally on PRIME systems, moving to VAXes and on to Unix workstations.  I’ve worked on Cray II’s and 8096 micro controllers.  I’m a computer engineer by education and I’ve spent most of my professional career more on the software than hardware side.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

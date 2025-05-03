@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
+	<meta name="generator" content="Hugo 0.147.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Swift - Thomas J. Petz, Jr.</title>
+	<title>Thomas J. Petz, Jr.</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +14,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/tags/swift/index.xml" title="Thomas J. Petz, Jr.">
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Thomas J. Petz, Jr.">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -55,9 +56,69 @@
 			<div class="primary">
 			
 <main class="main list" role="main">
-	<header class="main__header">
-		<h1 class="main__title">Swift</h1>
-	</header><article class="list__item post">
+	<div class="content main__content clearfix">
+		<p>Greetings and Salutations!</p>
+
+	</div>
+	<article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/troublewithbind9onnfs/" rel="bookmark">
+			Trouble with Bind9 on a Pi with NFS root
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2020-03-29T10:29:24-04:00">March 29, 2020</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">Linux</a>, <a class="meta__link" href="/categories/networking/" rel="category">Networking</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>I got a new Raspberry Pi 4 as I’m looking to consolidate some of my old Pi’s and clean up my servers. To avoid issues with wearing out the SD cards I mount the root file system off an NFS NAS storage server.</p>
+<p>Unfortunately I’ve hit a problem with installing Bind9 using the defaults when mounting root via NFS. When starting Bind9 I get the error</p>
+<p>named[5466]: working directory ‘/var/cache/bind’ is not writable</p>
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/posts/troublewithbind9onnfs/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/bleandwifionnano33iot/" rel="bookmark">
+			BLE and WiFi on Nano 33 IoT
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2020-03-08T10:31:09-04:00">March 08, 2020</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>I’ve put together a simple demo project of using both the BLE and WiFi radios on an Arduino Nano 33 IoT. Note, as there is only 1 radio you cannot use BLE and WiFi simultaneously. You can use one at a time, the order of how you make the various calls is important. Check it out on GitHub in <a href="https://github.com/tjpetz/SetWifiPoC">SetWiFiPoC</a>.</p>
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/newarduinoproject/" rel="bookmark">
+			New Arduino Project
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2019-12-14T10:33:00-04:00">December 14, 2019</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/microcontrollers/" rel="category">Microcontrollers</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>I’m working on tracking down and resolving a humidity problem in our home. While I have some basic measurements of humidity through our Nest Thermostat and a Canary device I want broader coverage so I can measure localized problem areas. The relatively new Arduino 33 BLE Sense looks to be a great device to meet my needs.</p>
+<p>I’m creating a simple network combining BLE (Bluetooth Low Energy) and WiFi. I’m planning to use an Arduino 33 BLE Sense to measure the environment. the Arduino 33 BLE Sense doesn’t have Wifi. I’m planning to use an Arduino 33 IoT to act as a “gateway”, polling the Sense for measurements and periodically publishing them to an MQTT broker. The MQTT broker will be Mosquitto running on a Raspberry Pi.</p>
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/posts/newarduinoproject/">Read more…</a>
+	</div>
+</article><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -78,13 +139,35 @@
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/posts/upgradednetworkbrowser/">Read more…</a>
 	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/posts/asusroutervpn/" rel="bookmark">
+			Configure Asus AC-68U Router VPN
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2016-10-01T10:37:22-04:00">October 01, 2016</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>The Asus AC-68U (like many routers) supports VPN functionality with the OpenVPN SSL based VPN software.  Out of the box the VPN is very simple to configure.  However, as delivered it uses quite a weak self signed certificate by Asus.  Additionally because of the way the default certs are configured it really only securely supports a single client.</p>
+<p>I searched the web and the documentation but didn’t find a good tutorial on configuring the router with your own certificates.   With some trial and error I was able to work out how to configure the system with my own CA and Certs.  This tutorial describes the steps I took to configure the system.  In this tutorial I assume you have your own CA and some basic familiarity with CAs and Certs.</p>
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/posts/asusroutervpn/">Read more…</a>
+	</div>
 </article>
 </main>
 
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/">«</a>
+	<span class="pagination__item pagination__item--current">2/2</span>
+</div>
 
 			</div>
-			
-<aside class="sidebar">
+			<aside class="sidebar">
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">

@@ -3,7 +3,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Recover Synology rsync backup jobs - Thomas J. Petz, Jr.</title>
+	<title>About - Thomas J. Petz, Jr.</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/about/">
 				
 				<span class="menu__text">About</span>
@@ -56,18 +56,17 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Recover Synology rsync backup jobs</h1>
+			<h1 class="post__title">About</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2020-08-11T10:25:17-04:00">August 11, 2020</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">Linux</a>
-	</span>
-</div></div>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0a14 14 0 1 1 0 28 1 1 0 0 1 0-28m0 3a3 3 0 1 0 0 22 3 3 0 0 0 0-22m1 4h-2v8.4l6.8 4.4L22 18l-6-3.8z"/></svg><time class="meta__text" datetime="2025-04-27T16:01:50-04:00">April 27, 2025</time></div></div>
 		</header>
 		<div class="content post__content clearfix">
-			<p>I recently upgraded a very old Netgear ReadyNAS device to a new Synology DS-420+ at a remote location.</p>
-<p>The main use of the old ReadyNAS was an a rsync target for backing up my main Synology rack station.  I have about 2.5TB of rsync’d files.  I wanted to reuse the existing rsync files to avoid the several months necessary to build a new  backup.</p>
-<p>I thought I could just repoint the existing Hyper Backup jobs on the Synology rack station.  This did not work as I couldn’t reset the name of the share where the files were to be backed up to.  I also tried building new jobs using the targets of the copied files but this would error out because HyperBackup would report that files already existed in the target directories.</p>
-<p>To work around these issues what I was able to do was create new rsync single copy backup jobs in HyperBackup with the same source as the existing jobs but pointing to new backup locations.  I then started the backup jobs.  I then canceled them shortly after they started. Once fully canceled I copied the old rsync files into the new backup locations.  I set the file ownership of these files to the same account used to run the rsync.  Once I did this I could restart the HyperBackup jobs and they detected the existence of the files.  This saved months of rerunning HyperBackup to fully rebuild the backup images.</p>
+			<p>I have been developing software for a very long time.  I learned FORTRAN on punch cards and  Z-80 assembler on a TRS-80 Model 1.  I cut my teeth professionally on PRIME systems, moving to VAXes and on to Unix workstations.  I’ve worked on Cray II’s and 8096 micro controllers.  I’m a computer engineer by education and I’ve spent most of my professional career more on the software than hardware side.</p>
+<p>I love designing and then implementing software systems.  I am passionate about good code.  I strive for simplicity and help others understand the beauty and value of simplicity.</p>
+<p>On this site I share some of my insights and current personal projects.</p>
+<p>Enjoy!</p>
+<p>Tom</p>
 
 		</div>
 	</article>
