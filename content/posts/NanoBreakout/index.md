@@ -2,6 +2,7 @@
 date = '2020-05-09T17:50:01-04:00'
 draft = false
 title = 'SWD Breakout and Breadboard for Nano 33 BLE Sense'
+lead = 'Add a SWD debugger to your Nano 33 BLE, BLE Sense, or IOT'
 categories = ["microcontrollers"]
 tags = ["nano33"]
 +++

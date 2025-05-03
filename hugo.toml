@@ -9,7 +9,8 @@ theme = 'mainroad'
   readmore = true
   toc = true
   post_meta = ["date", "categories"]
-  mainSections = ["posts", "about"] # Specify section pages to show on home page and the "Recent articles" widget
+  mainSections = ["posts"] # Specify section pages to show on home page and the "Recent articles" widget
+ 
 
 [Params.style.vars]
   highlightColor = "#4D518E" # Override highlight color
@@ -22,7 +23,7 @@ theme = 'mainroad'
 [Params.sidebar]
   home = "right" # Configure layout for home page
   list = "right"  # Configure layout for list pages
-  single = false # Configure layout for single pages
+  single = "right" # Configure layout for single pages
   # Enable widgets in given order
   widgets = ["recent", "categories", "taglist", "social"]
 
